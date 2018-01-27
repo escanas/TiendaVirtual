@@ -3391,3 +3391,8 @@ td.invert-image a img {
     font-size: 13px;
 }
 }
+
+
+.campoObligatorio{
+    color: red;
+}

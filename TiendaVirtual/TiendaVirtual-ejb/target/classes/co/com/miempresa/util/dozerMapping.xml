@@ -4,6 +4,23 @@
 
     <!--Maping tipos de certficado-->
     <mapping>
+        <class-a>co.com.miempresa.entities.User</class-a>
+        <class-b>co.com.miempresa.dto.UsuarioDTO</class-b>
+        <field>
+            <a>userId</a>
+            <b>id</b>
+        </field>
+        <field>
+            <a>userName</a>
+            <b>name</b>
+        </field>
+        <field>
+            <a>userEmail</a>
+            <b>email</b>
+        </field>
+    </mapping>
+
+    <mapping>
         <class-a>co.com.miempresa.entities.Producto</class-a>
         <class-b>co.com.miempresa.dto.ProductoDTO</class-b>
         <field>
@@ -31,12 +48,20 @@
             <b>estado</b>
         </field>
         <field>
-            <a>productUreg</a>
-            <b>ureg</b>
+            <a>user</a>
+            <b>userreg</b>
+        </field>
+        <field>
+            <a>userUpdate</a>
+            <b>useract</b>
         </field>
         <field>
             <a>productFreg</a>
             <b date-format="dd/MM/yyyy">freg</b>
+        </field>
+         <field>
+            <a>productFact</a>
+            <b date-format="dd/MM/yyyy">fact</b>
         </field>
     </mapping>
     

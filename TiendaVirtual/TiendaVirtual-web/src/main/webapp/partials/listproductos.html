@@ -1,0 +1,45 @@
+<div class="top-brands ng-scope">
+    <div class="container">
+        <h2>Productos registrados</h2>
+        <hr>
+        <div class="col-lg-12">
+            <div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example" class="table table-striped table-bordered dataTable no-footer" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Codigo</th>
+                                    <th>Descripcion</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Estado</th>
+                                    <th>Usuario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="producto in listProductos">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{producto.code}}</td>
+                                    <td>{{producto.decription}}</td>
+                                    <td>{{producto.precio | currency}}</td>
+                                    <td>{{producto.cantidad}}</td>
+                                    <td>{{producto.estado}}</td>
+                                    <td>{{producto.userreg.name}}</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

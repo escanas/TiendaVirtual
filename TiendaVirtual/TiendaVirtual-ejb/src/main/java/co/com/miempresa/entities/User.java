@@ -46,7 +46,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "user_id")
-    private Double userId;
+    private Long userId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -72,25 +72,11 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userIdCliente")
     private List<Venta> ventaList1;
 
-    public User() {
-    }
-
-    public User(Double userId) {
-        this.userId = userId;
-    }
-
-    public User(Double userId, String userName, String userPass, String userEmail) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userPass = userPass;
-        this.userEmail = userEmail;
-    }
-
-    public Double getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Double userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -126,7 +112,6 @@ public class User implements Serializable {
         this.userImage = userImage;
     }
 
-    @XmlTransient
     public List<UserRole> getUserRoleList() {
         return userRoleList;
     }
@@ -135,7 +120,6 @@ public class User implements Serializable {
         this.userRoleList = userRoleList;
     }
 
-    @XmlTransient
     public List<Venta> getVentaList() {
         return ventaList;
     }
@@ -144,7 +128,6 @@ public class User implements Serializable {
         this.ventaList = ventaList;
     }
 
-    @XmlTransient
     public List<Venta> getVentaList1() {
         return ventaList1;
     }
@@ -153,29 +136,4 @@ public class User implements Serializable {
         this.ventaList1 = ventaList1;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (userId != null ? userId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.userId == null && other.userId != null) || (this.userId != null && !this.userId.equals(other.userId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "co.com.miempresa.entities.User[ userId=" + userId + " ]";
-    }
-    
 }

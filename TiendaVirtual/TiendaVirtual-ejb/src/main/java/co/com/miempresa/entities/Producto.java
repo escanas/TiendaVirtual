@@ -16,7 +16,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -25,8 +27,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -44,9 +44,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Producto.findByProductPrecio", query = "SELECT p FROM Producto p WHERE p.productPrecio = :productPrecio")
     , @NamedQuery(name = "Producto.findByProductCantidad", query = "SELECT p FROM Producto p WHERE p.productCantidad = :productCantidad")
     , @NamedQuery(name = "Producto.findByProductEstado", query = "SELECT p FROM Producto p WHERE p.productEstado = :productEstado")
-    , @NamedQuery(name = "Producto.findByProductUreg", query = "SELECT p FROM Producto p WHERE p.productUreg = :productUreg")
     , @NamedQuery(name = "Producto.findByProductFreg", query = "SELECT p FROM Producto p WHERE p.productFreg = :productFreg")
-    , @NamedQuery(name = "Producto.findByProductUact", query = "SELECT p FROM Producto p WHERE p.productUact = :productUact")
     , @NamedQuery(name = "Producto.findByProductFact", query = "SELECT p FROM Producto p WHERE p.productFact = :productFact")})
 public class Producto implements Serializable {
 
@@ -56,7 +54,7 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "product_id")
-    private Double productId;
+    private Long productId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 80)
@@ -81,46 +79,34 @@ public class Producto implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "product_estado")
     private String productEstado;
-    @Basic(optional = false)
+
     @NotNull
-    @Column(name = "product_ureg")
-    private double productUreg;
+    @ManyToOne
+    @JoinColumn(name = "product_ureg")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "product_uact")
+    private User userUpdate;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "product_freg")
     @Temporal(TemporalType.TIMESTAMP)
     private Date productFreg;
-    @Column(name = "product_uact")
-    private Double productUact;
+
     @Column(name = "product_fact")
     @Temporal(TemporalType.TIMESTAMP)
     private Date productFact;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
     private List<DetalleVenta> detalleVentaList;
 
-    public Producto() {
-    }
-
-    public Producto(Double productId) {
-        this.productId = productId;
-    }
-
-    public Producto(Double productId, String productCode, String productDecription, long productPrecio, String productEstado, double productUreg, Date productFreg) {
-        this.productId = productId;
-        this.productCode = productCode;
-        this.productDecription = productDecription;
-        this.productPrecio = productPrecio;
-        this.productEstado = productEstado;
-        this.productUreg = productUreg;
-        this.productFreg = productFreg;
-    }
-
-    public Double getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(Double productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
@@ -172,12 +158,20 @@ public class Producto implements Serializable {
         this.productEstado = productEstado;
     }
 
-    public double getProductUreg() {
-        return productUreg;
+    public User getUser() {
+        return user;
     }
 
-    public void setProductUreg(double productUreg) {
-        this.productUreg = productUreg;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUserUpdate() {
+        return userUpdate;
+    }
+
+    public void setUserUpdate(User userUpdate) {
+        this.userUpdate = userUpdate;
     }
 
     public Date getProductFreg() {
@@ -188,14 +182,6 @@ public class Producto implements Serializable {
         this.productFreg = productFreg;
     }
 
-    public Double getProductUact() {
-        return productUact;
-    }
-
-    public void setProductUact(Double productUact) {
-        this.productUact = productUact;
-    }
-
     public Date getProductFact() {
         return productFact;
     }
@@ -204,7 +190,6 @@ public class Producto implements Serializable {
         this.productFact = productFact;
     }
 
-    @XmlTransient
     public List<DetalleVenta> getDetalleVentaList() {
         return detalleVentaList;
     }
@@ -213,29 +198,4 @@ public class Producto implements Serializable {
         this.detalleVentaList = detalleVentaList;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (productId != null ? productId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Producto)) {
-            return false;
-        }
-        Producto other = (Producto) object;
-        if ((this.productId == null && other.productId != null) || (this.productId != null && !this.productId.equals(other.productId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "co.com.miempresa.entities.Producto[ productId=" + productId + " ]";
-    }
-    
 }

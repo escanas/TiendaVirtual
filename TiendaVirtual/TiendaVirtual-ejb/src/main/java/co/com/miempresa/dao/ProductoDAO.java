@@ -66,6 +66,7 @@ public class ProductoDAO {
 
     public boolean guardarProducto(final Producto producto){
         try {
+            //INSER INTO ('') VALUES('','','','');
             entityManager.persist(producto);
             return true;
         } catch (PersistenceException e) {

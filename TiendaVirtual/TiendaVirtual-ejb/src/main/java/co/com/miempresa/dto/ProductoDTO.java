@@ -7,26 +7,30 @@ package co.com.miempresa.dto;
 
 /**
  * Alt + Insert para generar getter y setters
+ *
  * @author Ccepeda
  */
 public class ProductoDTO {
 
-    private Double id;
+    private Long id;
     private String code;
     private String decription;
     private long precio;
     private String imagen;
     private Integer cantidad;
     private String estado;
-    private double ureg;
+
+    private UsuarioDTO userreg;
+    private UsuarioDTO useract;
+
     private String freg;
     private String fact;
 
-    public Double getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -78,12 +82,20 @@ public class ProductoDTO {
         this.estado = estado;
     }
 
-    public double getUreg() {
-        return ureg;
+    public UsuarioDTO getUserreg() {
+        return userreg;
     }
 
-    public void setUreg(double ureg) {
-        this.ureg = ureg;
+    public void setUserreg(UsuarioDTO userreg) {
+        this.userreg = userreg;
+    }
+
+    public UsuarioDTO getUseract() {
+        return useract;
+    }
+
+    public void setUseract(UsuarioDTO useract) {
+        this.useract = useract;
     }
 
     public String getFreg() {

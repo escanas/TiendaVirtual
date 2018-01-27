@@ -13,6 +13,7 @@ var app = angular.module("TiendaVirtual", [
         config(["$routeProvider", function (a) {
                 a.when('/home', {templateUrl: 'partials/home.html', controller: 'homeCtrl'});
                 a.when('/crearproducto', {templateUrl: 'partials/crearproducto.html', controller: 'NewProductCtrl'});
+                a.when('/listarproductos', {templateUrl: 'partials/listproductos.html', controller: 'ListProductCtrl'});
                 a.otherwise({redirectTo: "/home"});
             }
         ]);
