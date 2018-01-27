@@ -11,7 +11,8 @@ var app = angular.module("TiendaVirtual", [
     "ngRoute",
     "TiendaVirtual.controllers"]).
         config(["$routeProvider", function (a) {
-                a.when('/home', {templateUrl: 'partials/principal.html', controller: 'homeCtrl'});
+                a.when('/home', {templateUrl: 'partials/home.html', controller: 'homeCtrl'});
+                a.when('/crearproducto', {templateUrl: 'partials/crearproducto.html', controller: 'NewProductCtrl'});
                 a.otherwise({redirectTo: "/home"});
             }
         ]);

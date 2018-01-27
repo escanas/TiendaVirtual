@@ -5,11 +5,14 @@
  */
 package co.com.miempresa.services;
 
+import co.com.miempresa.dto.ProductoDTO;
 import co.com.miempresa.dto.ResposeDTO;
 import co.com.miempresa.logica.ProductoLogica;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -32,5 +35,13 @@ public class ProductoServicios {
     public ResposeDTO consultarProductos() {
         return productoLogica.listarAll();
     }
+    
+    @POST
+    @Path("/crear")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+     public ResposeDTO guardarInformacion(final ProductoDTO producto) {
+         return productoLogica.guardarInformacion(producto);
+     }
 
 }

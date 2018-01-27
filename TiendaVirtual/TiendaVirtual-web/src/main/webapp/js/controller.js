@@ -19,8 +19,6 @@ var alfanumericoSimbol = /^[0-9a-zA-Z\s\.\,\!\¡\¿\?\#\°_-]+$/;
 var alfanumericoEspacio = /^[0-9a-zA-Z\s]+$/;
 var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,10}$/;
 
-
-
 module.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log("Controlador ppal muro cargado!!!!");
 
@@ -46,3 +44,11 @@ module.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
 
     }]);
 
+
+module.controller('NewProductCtrl', ['$scope', '$http', function ($scope, $http) {
+        console.log("Controlador NewProductCtrl muro cargado!!!!");
+        
+        //$scope.
+        
+        
+    }]);
