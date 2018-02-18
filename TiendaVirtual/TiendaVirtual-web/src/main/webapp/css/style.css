@@ -3396,3 +3396,12 @@ td.invert-image a img {
 .campoObligatorio{
     color: red;
 }
+
+
+
+.botonDescarga{
+    background-color: #fe9126 !important;
+}
+.botonDescarga :hover{
+    background-color: #fe9126 !important;
+}

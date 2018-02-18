@@ -99,6 +99,9 @@ public class Producto implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date productFact;
 
+    @Column(name = "producto_desc")
+    private Integer desc;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
     private List<DetalleVenta> detalleVentaList;
 
@@ -196,6 +199,14 @@ public class Producto implements Serializable {
 
     public void setDetalleVentaList(List<DetalleVenta> detalleVentaList) {
         this.detalleVentaList = detalleVentaList;
+    }
+
+    public Integer getDesc() {
+        return desc;
+    }
+
+    public void setDesc(Integer desc) {
+        this.desc = desc;
     }
 
 }

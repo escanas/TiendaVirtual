@@ -60,7 +60,7 @@ public class ProductoLogica {
         return response;
     }
 
-    public ResposeDTO consultarPorId(final Double idproducto) {
+    public ResposeDTO consultarPorId(final Long idproducto) {
         ResposeDTO response = new ResposeDTO();
         Producto producto = productoDAO.consultarPorId(idproducto);
         if (producto != null) {
@@ -79,10 +79,15 @@ public class ProductoLogica {
         ResposeDTO response = new ResposeDTO();
         boolean respuesta;
 
+       
         //este se cabia por el usuario que esta en sesion y llega por parametros
         User usuario = usuarioDAO.consultarPorId(new Long(1));
 
         Producto productoBD = TransformacionDozer.transformar(productoDTO, Producto.class);
+        
+        if(productoDTO.getImagen()!=null){
+            productoBD.setProductImagen(Base64.decodeBase64(productoDTO.getImagen()));
+        }
         if (productoBD.getProductId() != null) {
             productoBD.setProductFact(new Date());
             productoBD.setUserUpdate(usuario);

@@ -23,8 +23,8 @@
                             <div class="col-md-4 top_brand_left" ng-repeat="producto in listProductos">
                                 <div class="hover14 column" >
                                     <div class="agile_top_brand_left_grid">
-                                        <div class="agile_top_brand_left_grid_pos">
-                                            <img src="images/offer.png" alt=" " class="img-responsive" />
+                                        <div class="agile_top_brand_left_grid_pos" ng-show="producto.desc">
+                                            <img src="images/oferta.png" alt=" " class="img-responsive" />
                                         </div>
                                         <div class="agile_top_brand_left_grid1">
                                             <figure>
@@ -32,7 +32,8 @@
                                                     <div class="snipcart-thumb">
                                                         <a href="products.html">
                                                             <!--<img title=" " alt=" " src="images/images.jfif" />-->
-                                                            <img data-ng-src="data:image/png;base64,{{producto.imagen}}" data-err-src="images/descarga.jfif" width="100"/>
+                                                            <img ng-show="producto.imagen" ng data-ng-src="data:image/png;base64,{{producto.imagen}}" data-err-src="images/no-image." width="100" height="100"/>
+                                                            <img ng-show="!producto.imagen" data-ng-src="images/no-image.gif" data-err-src="images/no-image.gif" width="100" height="100"/>
                                                         </a>		
                                                         <p>{{producto.decription}}</p>
                                                         <div class="stars">
@@ -56,6 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br>
                             </div>
                             
                             

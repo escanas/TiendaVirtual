@@ -19,6 +19,7 @@ public class ProductoDTO {
     private String imagen;
     private Integer cantidad;
     private String estado;
+    private Integer desc;
 
     private UsuarioDTO userreg;
     private UsuarioDTO useract;
@@ -114,4 +115,13 @@ public class ProductoDTO {
         this.fact = fact;
     }
 
+    public Integer getDesc() {
+        return desc;
+    }
+
+    public void setDesc(Integer desc) {
+        this.desc = desc;
+    }
+
+    
 }
