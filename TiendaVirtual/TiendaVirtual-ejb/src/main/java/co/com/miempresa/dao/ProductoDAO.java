@@ -94,4 +94,17 @@ public class ProductoDAO {
         }
         return false;
     }
+    
+    public Integer consultarPorIdCategoria(Integer idcat){
+        try {
+            Query query = entityManager.createNamedQuery("Producto.findByIdCategoria").setParameter("idcategoria", idcat);
+            return Integer.parseInt(query.getSingleResult().toString());
+        } catch (NoResultException e) {
+            LOG.log(Level.SEVERE, "No trajo resultados {0}", e.getCause());
+            return 0;
+        } catch(ClassCastException e){
+            LOG.log(Level.SEVERE, "Ocurrio un error al contar por id categoria {0}", e.getCause());
+        }
+        return -1;
+    }
 }

@@ -14,6 +14,7 @@ public class CategoriaDTO {
     private Integer id;
     private String codigo;
     private String descripcion;
+    private String estado;
 
     public Integer getId() {
         return id;
@@ -37,6 +38,14 @@ public class CategoriaDTO {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 }

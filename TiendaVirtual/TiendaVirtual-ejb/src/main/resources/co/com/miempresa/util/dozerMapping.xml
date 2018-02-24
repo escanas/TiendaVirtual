@@ -18,6 +18,10 @@
             <a>catDesc</a>
             <b>descripcion</b>
         </field>
+        <field>
+            <a>catEstado</a>
+            <b>estado</b>
+        </field>
     </mapping>
     
     <!--Maping tipos de certficado-->

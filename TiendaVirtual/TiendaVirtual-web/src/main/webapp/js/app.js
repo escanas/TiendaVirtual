@@ -15,6 +15,13 @@ var app = angular.module("TiendaVirtual", [
                 a.when('/crearproducto', {templateUrl: 'partials/crearproducto.html', controller: 'NewProductCtrl'});
                 a.when('/editarproducto/:id', {templateUrl: 'partials/crearproducto.html', controller: 'EditarProductCtrl'});
                 a.when('/listarproductos', {templateUrl: 'partials/listproductos.html', controller: 'ListProductCtrl'});
+               
+                a.when('/crearcategoria', {templateUrl: 'partials/crearcategoria.html', controller: 'NewCatCtrl'});
+                a.when('/editarcategoria/:id', {templateUrl: 'partials/crearcategoria.html', controller: 'EditarCatCtrl'});
+                a.when('/listarcategoria', {templateUrl: 'partials/listcategoria.html', controller: 'ListCatCtrl'});
+                
+                
+                
                 a.otherwise({redirectTo: "/home"});
             }
         ]);

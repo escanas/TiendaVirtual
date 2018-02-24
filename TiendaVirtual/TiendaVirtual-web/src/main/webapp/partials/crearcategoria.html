@@ -1,0 +1,47 @@
+
+<div class="top-brands ng-scope">
+    <div class="container">
+        <h2>{{titulo}}</h2>
+        <hr>
+        <div class="col-lg-12">
+            <form>
+                <div class="row">
+
+                    <div class="form-group col-lg-6">
+                        <label class="control-label">Código</label>
+                        <input type="text" class="form-control" id="txtcodigoproductor" placeholder="Código del inventario" ng-model="nuevoCat.codigo">
+                        <small class="form-text text-muted campoObligatorio" ng-show="formSend && errores.code">{{errores.code}}</small>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="control-label">Descripción</label>
+                        <input type="text" class="form-control" id="txtdescriproducto" placeholder="Detalle del producto" ng-model="nuevoCat.descripcion">
+                        <small class="form-text text-muted campoObligatorio" ng-show="formSend && errores.decription">{{errores.decription}}</small>
+                    </div>
+                    
+                    <div class="form-group col-lg-6">
+                        <label class="control-label">Estado</label>
+                        <select class="form-control" id="exampleSelect1" ng-model="nuevoCat.estado">
+                            <option value="">Seleccione...</option>
+                            <option value="ACTIVO">ACTIVO</option>
+                            <option value="INACTIVO">INACTIVO</option>
+                            
+                        </select>
+                        <small class="form-text text-muted campoObligatorio" ng-show="formSen"></small>
+                    </div>
+                </div>
+                <div class="row text-right">
+
+                    <button type="submit" class="btn btn-success" ng-click="saveCategoria()">Guardar</button>
+                    <button type="submit" class="btn btn-primary" ng-click="cancelar()">Cancelar</button>
+                </div>
+
+
+
+
+
+            </form>
+
+
+        </div>
+    </div>
+</div>

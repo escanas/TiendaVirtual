@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -27,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Cacheable(false)
 @NamedQueries({
     @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c WHERE  c.catEstado='ACTIVO'")
+    ,@NamedQuery(name = "Categoria.findAllSinEstado", query = "SELECT c FROM Categoria c")
     , @NamedQuery(name = "Categoria.findByCatId", query = "SELECT c FROM Categoria c WHERE c.catId = :catId")
     , @NamedQuery(name = "Categoria.findByCatCod", query = "SELECT c FROM Categoria c WHERE c.catCod = :catCod")
     , @NamedQuery(name = "Categoria.findByCatDesc", query = "SELECT c FROM Categoria c WHERE c.catDesc = :catDesc")
@@ -35,8 +38,7 @@ public class Categoria implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cat_id")
     private Integer catId;
     @Basic(optional = false)

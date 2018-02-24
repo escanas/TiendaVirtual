@@ -40,12 +40,9 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Producto.findByProductId", query = "SELECT p FROM Producto p WHERE p.productId = :productId")
     , @NamedQuery(name = "Producto.findByProductIdRepetidos", query = "SELECT p FROM Producto p WHERE p.productId = :productId order by p.productId desc")
     , @NamedQuery(name = "Producto.findByProductCode", query = "SELECT p FROM Producto p WHERE p.productCode = :productCode")
-    , @NamedQuery(name = "Producto.findByProductDecription", query = "SELECT p FROM Producto p WHERE p.productDecription = :productDecription")
-    , @NamedQuery(name = "Producto.findByProductPrecio", query = "SELECT p FROM Producto p WHERE p.productPrecio = :productPrecio")
-    , @NamedQuery(name = "Producto.findByProductCantidad", query = "SELECT p FROM Producto p WHERE p.productCantidad = :productCantidad")
     , @NamedQuery(name = "Producto.findByProductEstado", query = "SELECT p FROM Producto p WHERE p.productEstado = :productEstado")
-    , @NamedQuery(name = "Producto.findByProductFreg", query = "SELECT p FROM Producto p WHERE p.productFreg = :productFreg")
-    , @NamedQuery(name = "Producto.findByProductFact", query = "SELECT p FROM Producto p WHERE p.productFact = :productFact")})
+    , @NamedQuery(name = "Producto.findByIdCategoria", query = "SELECT COUNT(p) FROM Producto p WHERE p.categoria.catId = :idcategoria")
+})
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
