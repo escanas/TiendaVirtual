@@ -59,7 +59,7 @@ module.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
                             $scope.procesoError(data.mensaje);
                         }
                     }).error(function (data, status, headers, config) {
-                alert(mensajeErrorServices);
+                $scope.procesoError(mensajeErrorServices);
             });
         };
         $scope.cargarProductosbase();
@@ -76,6 +76,21 @@ module.controller('NewProductCtrl', ['$scope', '$http', function ($scope, $http)
         $scope.errores = {};
         $scope.formSend = false;
         $scope.mensajeObligatorio = "* Este campo es obligatorio";
+        $scope.listCategorias;
+
+        $scope.loadcat = function () {
+            $http.get('./webresources/productoServicios/listcategorias/', {})
+                    .success(function (data, status, headers, config) {
+                        if (data.codigo === 'EXITO') {
+                            $scope.listCategorias = data.object;
+                        } else {
+                            $scope.procesoError(data.mensaje);
+                        }
+                    }).error(function (data, status, headers, config) {
+                $scope.procesoError(mensajeErrorServices);
+            });
+        };
+        $scope.loadcat();
 
         $scope.saveProduct = function () {
             $scope.formSend = true;
@@ -109,6 +124,13 @@ module.controller('NewProductCtrl', ['$scope', '$http', function ($scope, $http)
                 error = true;
             } else {
                 $scope.errores.estado = '';
+            }
+            console.log($scope.nuevoProducto);
+            if (!$scope.nuevoProducto.categoria) {
+                $scope.errores.categoria = $scope.mensajeObligatorio;
+                error = true;
+            } else {
+                $scope.errores.categoria = '';
             }
 
             if (error) {
@@ -145,6 +167,20 @@ module.controller('EditarProductCtrl', ['$scope', '$http', '$routeParams', funct
         $scope.nuevoProducto = {};
         $scope.errores = {};
         $scope.formSend = false;
+        $scope.listCategorias=[];
+        $scope.loadcat = function () {
+            $http.get('./webresources/productoServicios/listcategorias/', {})
+                    .success(function (data, status, headers, config) {
+                        if (data.codigo === 'EXITO') {
+                            $scope.listCategorias = data.object;
+                        } else {
+                            $scope.procesoError(data.mensaje);
+                        }
+                    }).error(function (data, status, headers, config) {
+                $scope.procesoError(mensajeErrorServices);
+            });
+        };
+        $scope.loadcat();
 
         var idProducto;
         $scope.buscarPorId = function (id) {
@@ -229,6 +265,7 @@ module.controller('EditarProductCtrl', ['$scope', '$http', '$routeParams', funct
     }]);
 
 module.controller('ListProductCtrl', ['$scope', '$http', function ($scope, $http) {
+         controllerBase($scope);
         console.log("Controlador NewProductCtrl muro cargado!!!!");
 
         $scope.listProductos = [];

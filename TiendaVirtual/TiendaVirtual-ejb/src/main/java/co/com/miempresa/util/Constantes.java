@@ -23,4 +23,6 @@ public class Constantes {
 
     public static String VAL_ELIMINAR_PRODUCTO_OK = "El producto se eliminó correctamente";
     public static String VAL_ELIMINAR_PRODUCTO_ERROR = "Error al eliminar la información del producto, consulte con el administador";
+    
+    public static String VAL_LIST_CATEGORIAS_ERROR = "No se encuentran categorias activas en el sistema";
 }

@@ -102,6 +102,10 @@ public class Producto implements Serializable {
     @Column(name = "producto_desc")
     private Integer desc;
 
+    @JoinColumn(name = "cat_id")
+    @ManyToOne
+    private Categoria categoria;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
     private List<DetalleVenta> detalleVentaList;
 
@@ -207,6 +211,14 @@ public class Producto implements Serializable {
 
     public void setDesc(Integer desc) {
         this.desc = desc;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
 }

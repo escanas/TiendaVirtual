@@ -5,10 +5,13 @@
  */
 package co.com.miempresa.logica;
 
+import co.com.miempresa.dao.CategoriaDAO;
 import co.com.miempresa.dao.ProductoDAO;
 import co.com.miempresa.dao.UsuarioDAO;
+import co.com.miempresa.dto.CategoriaDTO;
 import co.com.miempresa.dto.ProductoDTO;
 import co.com.miempresa.dto.ResposeDTO;
+import co.com.miempresa.entities.Categoria;
 import co.com.miempresa.entities.Producto;
 import co.com.miempresa.entities.User;
 import co.com.miempresa.util.Constantes;
@@ -31,6 +34,21 @@ public class ProductoLogica {
     private ProductoDAO productoDAO;
     @EJB
     private UsuarioDAO usuarioDAO;
+    @EJB
+    private CategoriaDAO categoriaDAO;
+
+    public ResposeDTO listarCategorias() {
+        ResposeDTO response = new ResposeDTO();
+        List<Categoria> listabd = categoriaDAO.listarCategoriasActivas();
+        if (listabd != null && !listabd.isEmpty()) {
+            response.setCodigo(Constantes.MENSAJES.EXITO.toString());
+            response.setObject(TransformacionDozer.transformar(listabd, CategoriaDTO.class));
+        } else {
+            response.setCodigo(Constantes.MENSAJES.ERROR.toString());
+            response.setMensaje(Constantes.VAL_LIST_CATEGORIAS_ERROR);
+        }
+        return response;
+    }
 
     public ResposeDTO listarAll() {
         ResposeDTO response = new ResposeDTO();
@@ -79,13 +97,12 @@ public class ProductoLogica {
         ResposeDTO response = new ResposeDTO();
         boolean respuesta;
 
-       
         //este se cabia por el usuario que esta en sesion y llega por parametros
         User usuario = usuarioDAO.consultarPorId(new Long(1));
 
         Producto productoBD = TransformacionDozer.transformar(productoDTO, Producto.class);
-        
-        if(productoDTO.getImagen()!=null){
+
+        if (productoDTO.getImagen() != null) {
             productoBD.setProductImagen(Base64.decodeBase64(productoDTO.getImagen()));
         }
         if (productoBD.getProductId() != null) {

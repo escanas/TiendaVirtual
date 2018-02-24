@@ -2,6 +2,24 @@
 <mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
+    
+    <mapping>
+        <class-a>co.com.miempresa.entities.Categoria</class-a>
+        <class-b>co.com.miempresa.dto.CategoriaDTO</class-b>
+        <field>
+            <a>catId</a>
+            <b>id</b>
+        </field>
+        <field>
+            <a>catCod</a>
+            <b>codigo</b>
+        </field>
+        <field>
+            <a>catDesc</a>
+            <b>descripcion</b>
+        </field>
+    </mapping>
+    
     <!--Maping tipos de certficado-->
     <mapping>
         <class-a>co.com.miempresa.entities.User</class-a>
@@ -62,6 +80,10 @@
          <field>
             <a>productFact</a>
             <b date-format="dd/MM/yyyy">fact</b>
+        </field>
+        <field>
+            <a>categoria</a>
+            <b>categoria</b>
         </field>
     </mapping>
     

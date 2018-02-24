@@ -27,6 +27,8 @@ public class ProductoDTO {
     private String freg;
     private String fact;
 
+    private CategoriaDTO categoria;
+
     public Long getId() {
         return id;
     }
@@ -123,5 +125,12 @@ public class ProductoDTO {
         this.desc = desc;
     }
 
-    
+    public CategoriaDTO getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaDTO categoria) {
+        this.categoria = categoria;
+    }
+
 }

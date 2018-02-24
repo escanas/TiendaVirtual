@@ -51,12 +51,19 @@ public class ProductoServicios {
     public ResposeDTO buscarProductoPorId(@PathParam("id") final Long idproducto) {
         return productoLogica.consultarPorId(idproducto);
     }
-    
+
     @POST
     @Path("/eliminar")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public ResposeDTO eliminarInformacion(final ProductoDTO producto) {
         return productoLogica.eliminarInformacion(producto);
+    }
+
+    @GET
+    @Path("/listcategorias")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ResposeDTO consultarCategorias() {
+        return productoLogica.listarCategorias();
     }
 }
